@@ -1,0 +1,19 @@
+-- ============================================================
+--  ENDFIELD V2 - Script de migración Flyway
+--  Archivo : V3__BD_EndfieldV2.sql
+--  Motor   : MySQL
+-- ============================================================
+--
+--  Descripción:
+--  Tercera migración del esquema. Corrección de diseño:
+--  El campo num_transaccion no pertenece a la tabla banco
+--  ya que es un dato propio de cada transacción individual,
+--  no un atributo fijo del banco. Se elimina de banco y se
+--  confirma su existencia en pago_banco donde tiene sentido.
+--
+-- ============================================================
+
+-- ------------------------------------------------------------
+--  ELIMINAR num_transaccion de banco
+-- ------------------------------------------------------------
+ALTER TABLE banco DROP COLUMN num_transaccion;
